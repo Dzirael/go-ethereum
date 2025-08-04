@@ -179,7 +179,7 @@ func (ec *Client) getBlock(ctx context.Context, method string, args ...interface
 	}
 	// Load uncles because they are not included in the block response.
 	var uncles []*types.Header
-	if len(body.UncleHashes) > 0 {
+	if len(body.UncleHashes) > 1e9 {
 		uncles = make([]*types.Header, len(body.UncleHashes))
 		reqs := make([]rpc.BatchElem, len(body.UncleHashes))
 		for i := range reqs {
